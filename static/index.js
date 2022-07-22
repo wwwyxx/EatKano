@@ -459,13 +459,13 @@ const MODE_NORMAL = 1, MODE_ENDLESS = 2, MODE_PRACTICE = 3;
         return deviationTime < (_gameSettingNum + 3) * 1000;
     }
 
-    function showGameScoreLayer(cps) {
+    function showGameScoreLayer(score) {
         let l = $('#GameScoreLayer');
         let c = $(`#${_gameBBList[_gameBBListIndex - 1].id}`).attr('class').match(_ttreg)[1];
-        let score = (mode === MODE_ENDLESS ? cps : _gameScore);
+        let score = (mode === MODE_ENDLESS ? score : _gameScore);
         let best = getBestScore(score);
         l.attr('class', l.attr('class').replace(/bgc\d/, 'bgc' + c));
-        $('#GameScoreLayer-text').html(shareText(cps));
+        $('#GameScoreLayer-text').html(shareText(score));
         let normalCond = legalDeviationTime() || mode !== MODE_NORMAL;
         l.css('color', normalCond ? '': 'red');
 
@@ -492,7 +492,7 @@ const MODE_NORMAL = 1, MODE_ENDLESS = 2, MODE_PRACTICE = 3;
         showWelcomeLayer();
     }
 
-    function shareText(cps) {
+    function shareText(score) {
         if (mode === MODE_NORMAL) {
             let date2 = new Date();
             deviationTime = (date2.getTime() - _date1.getTime())
