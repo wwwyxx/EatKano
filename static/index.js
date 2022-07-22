@@ -502,10 +502,10 @@ const MODE_NORMAL = 1, MODE_ENDLESS = 2, MODE_PRACTICE = 3;
             SubmitResults();
         }
 
-        if (score <= 50) return I18N['text-level-1'];
-        if (score <= 80) return I18N['text-level-2'];
-        if (score <= 100)  return I18N['text-level-3'];
-        if (score <= 150) return I18N['text-level-4'];
+        if (cps <= 4) return I18N['text-level-1'];
+        if (cps <= 5) return I18N['text-level-2'];
+        if (cps <= 7)  return I18N['text-level-3'];
+        if (cps <= 8) return I18N['text-level-4'];
         return I18N['text-level-5'];
     }
 
